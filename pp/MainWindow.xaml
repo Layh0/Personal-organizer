@@ -1,7 +1,7 @@
 ﻿<Window x:Class="pp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Личный Органайзер" Height="600" Width="900">
+        Title="Личный Органайзер" Height="600" Width="1050">
     <Grid Margin="10">
         <TabControl>
 
@@ -16,11 +16,13 @@
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
 
-                        <Button Content="Добавить" Command="{Binding AddContactCommand}" Margin="10,0,5,0" Width="80"/>
-                        <Button Content="Удалить" Command="{Binding DeleteContactCommand}" Margin="0,0,5,0" Width="80"/>
+                        <Button Content="➕ Добавить" Command="{Binding AddContactCommand}" Margin="10,0,5,0" Width="120"/>
+                        <Button Content="🗑️ Удалить" Command="{Binding DeleteContactCommand}" Margin="0,0,5,0" Width="120"/>
+                        <Button Content="✏️ Редактировать" Command="{Binding EditContactCommand}" Margin="0,0,5,0" Width="130"/>
 
                         <Button Content="Импорт vCard" Command="{Binding ImportVCardCommand}" Margin="10,0,5,0"/>
                         <Button Content="Экспорт vCard" Command="{Binding ExportVCardCommand}"/>
+                        <Button Content="🗺 Открыть на карте" Command="{Binding OpenMapCommand}" Margin="10,0,5,0" Width="150"/>
                     </StackPanel>
 
                     <DataGrid Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" 
@@ -31,6 +33,7 @@
                             <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
                             <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                             <DataGridTextColumn Header="День Рождения" Binding="{Binding Birthday, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -45,8 +48,8 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button Content="Добавить задачу" Command="{Binding AddTaskCommand}" Margin="0,0,5,0" Width="120"/>
-                        <Button Content="Удалить" Command="{Binding DeleteTaskCommand}" Margin="0,0,5,0" Width="80"/>
+                        <Button Content="➕ Добавить задачу" Command="{Binding AddTaskCommand}" Margin="0,0,5,0" Width="150"/>
+                        <Button Content="🗑️ Удалить" Command="{Binding DeleteTaskCommand}" Margin="0,0,5,0" Width="120"/>
                         <Button Content="Отметить выполнение" Command="{Binding CompleteTaskCommand}" Width="150"/>
                     </StackPanel>
 
@@ -56,7 +59,8 @@
                             <DataGridTextColumn Header="Задача" Binding="{Binding Title}" Width="*"/>
                             <DataGridTextColumn Header="Дедлайн" Binding="{Binding Deadline, StringFormat=dd.MM.yyyy HH:mm}"/>
                             <DataGridCheckBoxColumn Header="Выполнено" Binding="{Binding IsCompleted}" Width="80"/>
-                            <DataGridTextColumn Header="Контакт" Binding="{Binding Contact.FirstName}"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding Contact.FirstName}"/>
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding Contact.LastName}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -71,8 +75,8 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button Content="Добавить заметку" Command="{Binding AddNoteCommand}" Margin="0,0,5,0" Width="130"/>
-                        <Button Content="Удалить" Command="{Binding DeleteNoteCommand}" Width="80"/>
+                        <Button Content="➕ Добавить заметку" Command="{Binding AddNoteCommand}" Margin="0,0,5,0" Width="150"/>
+                        <Button Content="🗑️ Удалить" Command="{Binding DeleteNoteCommand}" Width="120"/>
                     </StackPanel>
 
                     <DataGrid Grid.Row="1" ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote}" 
